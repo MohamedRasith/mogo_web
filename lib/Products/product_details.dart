@@ -1,7 +1,5 @@
-import 'dart:js';
 
 import 'package:count_stepper/count_stepper.dart';
-import 'package:counter/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:mogo_web/LoginPage/login_page.dart';
 import 'package:mogo_web/fonts.dart';
@@ -33,6 +31,7 @@ class _ProductDetails extends State<ProductDetails>{
       child: Container(
         color: const Color.fromARGB(15, 15, 15, 15),
         child: Column(
+
           children: [
             const SizedBox(
               height: 20,
@@ -41,75 +40,196 @@ class _ProductDetails extends State<ProductDetails>{
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: product()),
-                Expanded(child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("About This Product", style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
-                    Text("A shoe is an item of footwear intended to protect and comfort the human foot. "
-                        "They are often worn with a sock. Shoes are also used as an item of decoration and fashion. "
-                        "The design of shoes has varied enormously through time and from culture to culture, with form originally being tied to function. "
-                        "Though the human foot can adapt to varied terrains and climate conditions, it is still vulnerable to environmental hazards such as sharp rocks and temperature extremes, which shoes protect against. "
-                        "Some shoes are worn as safety equipment, such as steel-toe boots which are required footwear at industrial worksites."
-                        "\n\nAdditionally, fashion has often dictated many design elements, such as whether shoes have very high heels or flat ones. Contemporary footwear varies widely in style, complexity and cost. Basic sandals may consist of only a thin sole and simple strap and be sold for a low cost. High fashion shoes made by famous designers may be made of expensive materials, use complex construction and sell for large sums of money. Some shoes are designed for specific purposes, such as boots designed specifically for mountaineering or skiing, while others have more generalized usage such as sneakers which have transformed from a special purpose sport shoe into a general use shoe."
-                        ,style: AppFonts.lightStyle(
-                        fontColor: Colors.black,fontSize: 15
-                    ),),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Row(
-                      children: [
-                        Text("Material Type:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        Text("Dealer:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
-                      ],
-                    ),
+                Image.asset("assets/images/shoe.png"),
+                const SizedBox(
+                  width: 30,
+                ),
+                SizedBox(
+                  width: 400,
+                  child: Expanded(child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Shoe(Black)", style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                      Text("Rs.249", style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      colorAndsize(),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        children: [
+                          Text("Material Type:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
+                          const SizedBox(
+                            width: 100,
+                          ),
+                          Text("Dealer:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      ),
 
-                    Row(
-                      children: [
-                        Text("Strong Rubber",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                        const SizedBox(
-                          width: 80,
+                      Row(
+                        children: [
+                          Text("Strong Rubber",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          Text("Enterprises",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Text("Add Items",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 40,
+                        width: 90,
+                        padding: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 2.0,
+                                spreadRadius: 2.0,
+                              ), //BoxShadow
+                            ]
                         ),
-                        Text("Enterprises",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Text("Add Items",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 40,
-                      width: 90,
-                      padding: const EdgeInsets.all(5),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 2.0,
-                            spreadRadius: 2.0,
-                          ), //BoxShadow
-                        ]
+                        child: CountStepper(
+                          min: 0,
+                          textStyle: AppFonts.boldStyle(fontColor: Colors.black),
+                          max: 10,
+                        ),
+                      )
+                    ],
+                  )),
+                ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:[
+                      Padding(padding: const EdgeInsets.only(top:10,left: 20),
+                        child:Text("Related Products", style: AppFonts.extraBoldStyle(fontSize: 20,fontColor: Colors.black),),),
+
+
+                      const SizedBox(
+                        height: 10,
                       ),
-                      child: CountStepper(
-                        min: 0,
-                        textStyle: AppFonts.boldStyle(fontColor: Colors.black),
-                        max: 10,
+                      Padding(padding: const EdgeInsets.only(left: 20),
+                        child: SingleChildScrollView(
+                            child:  GestureDetector(
+                              onTap: (){
+                                Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      ),
+                                      width: 300,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                          Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                          Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                          Container(
+                                            width: 50,
+                                            height: 30,
+                                            padding: const EdgeInsets.all(5),
+                                            decoration: const BoxDecoration(
+                                                color: Colors.lightGreen,
+                                                borderRadius: BorderRadius.all(Radius.circular(20))),
+                                            child: Row(
+                                              children: [
+                                                const Icon(Icons.star,color: Colors.white,size: 10,),
+                                                Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                  ),
+
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      ),
+                                      width: 300,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                          Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                          Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                          Container(
+                                            width: 50,
+                                            height: 30,
+                                            padding: const EdgeInsets.all(5),
+                                            decoration: const BoxDecoration(
+                                                color: Colors.lightGreen,
+                                                borderRadius: BorderRadius.all(Radius.circular(20))),
+                                            child: Row(
+                                              children: [
+                                                const Icon(Icons.star,color: Colors.white,size: 10,),
+                                                Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+
+                                ],
+                              ),
+                            )
+                        ),
                       ),
-                    )
-                  ],
-                ))
+                    ]
+                )
+            ])
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(padding: const EdgeInsets.only(left: 20,right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("About This Product", style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
+                Text("A shoe is an item of footwear intended to protect and comfort the human foot. "
+                    "They are often worn with a sock. Shoes are also used as an item of decoration and fashion. "
+                    "The design of shoes has varied enormously through time and from culture to culture, with form originally being tied to function. "
+                    "Though the human foot can adapt to varied terrains and climate conditions, it is still vulnerable to environmental hazards such as sharp rocks and temperature extremes, which shoes protect against. "
+                    "Some shoes are worn as safety equipment, such as steel-toe boots which are required footwear at industrial worksites."
+                    "\n\nAdditionally, fashion has often dictated many design elements, such as whether shoes have very high heels or flat ones. Contemporary footwear varies widely in style, complexity and cost. Basic sandals may consist of only a thin sole and simple strap and be sold for a low cost. High fashion shoes made by famous designers may be made of expensive materials, use complex construction and sell for large sums of money. Some shoes are designed for specific purposes, such as boots designed specifically for mountaineering or skiing, while others have more generalized usage such as sneakers which have transformed from a special purpose sport shoe into a general use shoe."
+                  ,style: AppFonts.lightStyle(
+                      fontColor: Colors.black,fontSize: 15
+                  ),),
               ],
-            )
+            ),
             ),
             const SizedBox(
               height: 50,
@@ -342,25 +462,6 @@ class _ProductDetails extends State<ProductDetails>{
         )
       ],
     ),
-    );
-  }
-  product(){
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset("assets/images/shoe.png"),
-          const SizedBox(
-            height: 20,
-          ),
-          Text("Shoe(Black)", style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-          Text("Rs.249", style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-          const SizedBox(
-            height: 15,
-          ),
-          colorAndsize()
-        ],
-      ),
     );
   }
   cutomerReview(){

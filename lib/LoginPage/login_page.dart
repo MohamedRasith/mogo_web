@@ -68,172 +68,178 @@ class _Login extends State<Login>{
                     height: 50,
                   ),
 
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(padding: const EdgeInsets.all(20),
-                        child: Text("Shop Our Top Picks", style: AppFonts.extraBoldStyle(fontSize: 20,fontColor: Colors.black),),
-                      )
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(padding: const EdgeInsets.only(left: 20),
-                    child: SizedBox(
-                        height: 240,
-                        child:  GestureDetector(
-                          onTap: (){
-                            Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  width: 200,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
-                                      const SizedBox(
-                                        height: 50,
-                                      ),
-                                      Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-                                      Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        padding: const EdgeInsets.all(5),
-                                        decoration: const BoxDecoration(
-                                            color: Colors.lightGreen,
-                                            borderRadius: BorderRadius.all(Radius.circular(20))),
-                                        child: Row(
-                                          children: [
-                                            const Icon(Icons.star,color: Colors.white,size: 10,),
-                                            Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 190),
+                child:Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Padding(padding: const EdgeInsets.only(top:20,bottom: 20,left: 10),
+                      child:Text("Shop Our Top Picks", style: AppFonts.extraBoldStyle(fontSize: 20,fontColor: Colors.black),),),
 
-                              const SizedBox(
-                                width: 50,
-                              ),
-                              Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  width: 200,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
-                                      const SizedBox(
-                                        height: 50,
-                                      ),
-                                      Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-                                      Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        padding: const EdgeInsets.all(5),
-                                        decoration: const BoxDecoration(
-                                            color: Colors.lightGreen,
-                                            borderRadius: BorderRadius.all(Radius.circular(20))),
-                                        child: Row(
-                                          children: [
-                                            const Icon(Icons.star,color: Colors.white,size: 10,),
-                                            Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                              const SizedBox(
-                                width: 50,
-                              ),
-                              Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  width: 200,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
-                                      const SizedBox(
-                                        height: 50,
-                                      ),
-                                      Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-                                      Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        padding: const EdgeInsets.all(5),
-                                        decoration: const BoxDecoration(
-                                            color: Colors.lightGreen,
-                                            borderRadius: BorderRadius.all(Radius.circular(20))),
-                                        child: Row(
-                                          children: [
-                                            const Icon(Icons.star,color: Colors.white,size: 10,),
-                                            Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                              const SizedBox(
-                                width: 50,
-                              ),
-                              Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  ),
-                                  width: 200,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
-                                      const SizedBox(
-                                        height: 50,
-                                      ),
-                                      Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-                                      Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                                      Container(
-                                        width: 50,
-                                        height: 30,
-                                        padding: const EdgeInsets.all(5),
-                                        decoration: const BoxDecoration(
-                                            color: Colors.lightGreen,
-                                            borderRadius: BorderRadius.all(Radius.circular(20))),
-                                        child: Row(
-                                          children: [
-                                            const Icon(Icons.star,color: Colors.white,size: 10,),
-                                            Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                            ],
-                          ),
-                        )
+
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
+                    Padding(padding: const EdgeInsets.only(left: 20),
+                      child: SizedBox(
+                          height: 240,
+                          child:  GestureDetector(
+                            onTap: (){
+                              Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    width: 200,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                        const SizedBox(
+                                          height: 50,
+                                        ),
+                                        Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                        Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                        Container(
+                                          width: 50,
+                                          height: 30,
+                                          padding: const EdgeInsets.all(5),
+                                          decoration: const BoxDecoration(
+                                              color: Colors.lightGreen,
+                                              borderRadius: BorderRadius.all(Radius.circular(20))),
+                                          child: Row(
+                                            children: [
+                                              const Icon(Icons.star,color: Colors.white,size: 10,),
+                                              Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ),
+
+                                const SizedBox(
+                                  width: 50,
+                                ),
+                                Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    width: 200,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                        const SizedBox(
+                                          height: 50,
+                                        ),
+                                        Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                        Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                        Container(
+                                          width: 50,
+                                          height: 30,
+                                          padding: const EdgeInsets.all(5),
+                                          decoration: const BoxDecoration(
+                                              color: Colors.lightGreen,
+                                              borderRadius: BorderRadius.all(Radius.circular(20))),
+                                          child: Row(
+                                            children: [
+                                              const Icon(Icons.star,color: Colors.white,size: 10,),
+                                              Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ),
+                                const SizedBox(
+                                  width: 50,
+                                ),
+                                Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    width: 200,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                        const SizedBox(
+                                          height: 50,
+                                        ),
+                                        Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                        Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                        Container(
+                                          width: 50,
+                                          height: 30,
+                                          padding: const EdgeInsets.all(5),
+                                          decoration: const BoxDecoration(
+                                              color: Colors.lightGreen,
+                                              borderRadius: BorderRadius.all(Radius.circular(20))),
+                                          child: Row(
+                                            children: [
+                                              const Icon(Icons.star,color: Colors.white,size: 10,),
+                                              Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ),
+                                const SizedBox(
+                                  width: 50,
+                                ),
+                                Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    width: 200,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                        const SizedBox(
+                                          height: 50,
+                                        ),
+                                        Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                        Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                        Container(
+                                          width: 50,
+                                          height: 30,
+                                          padding: const EdgeInsets.all(5),
+                                          decoration: const BoxDecoration(
+                                              color: Colors.lightGreen,
+                                              borderRadius: BorderRadius.all(Radius.circular(20))),
+                                          child: Row(
+                                            children: [
+                                              const Icon(Icons.star,color: Colors.white,size: 10,),
+                                              Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ),
+                              ],
+                            ),
+                          )
+                      ),
+                    ),
+                  ]
+                )
+              ),
 
                   const SizedBox(
                     height: 50,
@@ -397,94 +403,98 @@ class _Login extends State<Login>{
     );
   }
   explore(){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-          Padding(padding: const EdgeInsets.only(left: 20),
-          child: Text("Explore",style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),) ,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 200),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(padding: const EdgeInsets.only(top: 20,bottom: 20),
+            child: Text("Explore",style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
+          ) ,
+
+          const SizedBox(
+            height: 20,
           ),
-        const SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children:[
-                const CircleAvatar(
-                  radius: 70,
-                  backgroundColor:Color.fromARGB(
-                      255, 7, 21, 110),
-                  child: Padding(padding:EdgeInsets.all(10),
-    child:Icon(Icons.play_circle_filled_sharp,size: 50,color: Colors.white,)
-                ),),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text("Videos",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
-              ]
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                  children:[
+                    const CircleAvatar(
+                      radius: 70,
+                      backgroundColor:Color.fromARGB(
+                          255, 7, 21, 110),
+                      child: Padding(padding:EdgeInsets.all(10),
+                          child:Icon(Icons.play_circle_filled_sharp,size: 50,color: Colors.white,)
+                      ),),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text("Videos",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
+                  ]
+              ),
 
-            const SizedBox(
-              width: 100,
-            ),
-            Column(
-                children:[
-                  const CircleAvatar(
-                    radius: 70,
-                    backgroundColor: Color.fromARGB(
-                        255, 7, 21, 110),
-                    child:Padding(padding: EdgeInsets.all(10),
-                    child: Icon(Icons.shopping_cart,size: 50,color: Colors.white,))
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text("Shop",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
-                ]
-            ),
+              const SizedBox(
+                width: 100,
+              ),
+              Column(
+                  children:[
+                    const CircleAvatar(
+                        radius: 70,
+                        backgroundColor: Color.fromARGB(
+                            255, 7, 21, 110),
+                        child:Padding(padding: EdgeInsets.all(10),
+                            child: Icon(Icons.shopping_cart,size: 50,color: Colors.white,))
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text("Shop",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
+                  ]
+              ),
 
-            const SizedBox(
-              width: 100,
-            ),
-            Column(
-                children:[
-                  const CircleAvatar(
-                    radius: 70,
-                    backgroundColor: Color.fromARGB(
-                        255, 7, 21, 110),
-                    child: Padding(padding: EdgeInsets.all(10),
-                      child: Icon(Icons.handshake,size: 50,color: Colors.white,))
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text("Insurance",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
-                ]
-            ),
+              const SizedBox(
+                width: 100,
+              ),
+              Column(
+                  children:[
+                    const CircleAvatar(
+                        radius: 70,
+                        backgroundColor: Color.fromARGB(
+                            255, 7, 21, 110),
+                        child: Padding(padding: EdgeInsets.all(10),
+                            child: Icon(Icons.handshake,size: 50,color: Colors.white,))
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text("Insurance",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
+                  ]
+              ),
 
-            const SizedBox(
-              width: 100,
-            ),
-            Column(
-                children:[
-                  const CircleAvatar(
-                    radius: 70,
-                    backgroundColor: Color.fromARGB(
-                        255, 7, 21, 110),
-                    child: Padding(padding: EdgeInsets.all(10),
-                      child: Icon(Icons.keyboard_arrow_right,size: 50,color: Colors.white,))
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text("Explore All",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
-                ]
-            ),
+              const SizedBox(
+                width: 100,
+              ),
+              Column(
+                  children:[
+                    const CircleAvatar(
+                        radius: 70,
+                        backgroundColor: Color.fromARGB(
+                            255, 7, 21, 110),
+                        child: Padding(padding: EdgeInsets.all(10),
+                            child: Icon(Icons.keyboard_arrow_right,size: 50,color: Colors.white,))
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text("Explore All",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
+                  ]
+              ),
 
-          ],
-        )
-      ],
+            ],
+          )
+        ],
+      ),
     );
   }
 }

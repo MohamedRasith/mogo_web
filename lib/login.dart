@@ -25,22 +25,22 @@ class _loginState extends State<login> {
       child: Column(
         children: [
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           Center(
             child: Image.asset(
               'assets/images/logo.png',
-              width: 220,
-              height: 100,
+              width: 180,
+              height: 50,
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           const Text(
             'Sign In',
             style: TextStyle(
-                fontSize: 20,
+                fontSize: 15,
                 color: Color.fromARGB(255, 51, 47, 90),
                 fontWeight: FontWeight.bold),
           ),
@@ -49,8 +49,8 @@ class _loginState extends State<login> {
           ),
           Container(
             alignment: Alignment.center,
-            height: h * 0.60,
-            width: w * 0.40,
+            height: 330,
+            width: 335,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -70,7 +70,7 @@ class _loginState extends State<login> {
                     height: 30,
                   ),
                   SizedBox(
-                    width: w * 0.25,
+                    width: w * 0.20,
                     child: const Text(
                       'Username',
                       textAlign: TextAlign.start,
@@ -85,7 +85,7 @@ class _loginState extends State<login> {
                     height: 12,
                   ),
                   SizedBox(
-                    width: w * 0.25,
+                    width: w * 0.20,
                     height: 37,
                     child: TextFormField(
                         textAlign: TextAlign.start,
@@ -110,7 +110,7 @@ class _loginState extends State<login> {
                     height: 15,
                   ),
                   SizedBox(
-                    width: w * 0.25,
+                    width: w * 0.20,
                     child: const Text(
                       'Password',
                       textAlign: TextAlign.left,
@@ -125,7 +125,7 @@ class _loginState extends State<login> {
                     height: 12,
                   ),
                   SizedBox(
-                    width: w * 0.25,
+                    width: w * 0.20,
                     height: 37,
                     child: TextFormField(
                       obscureText: true,
@@ -151,7 +151,7 @@ class _loginState extends State<login> {
                     height: 30,
                   ),
                   SizedBox(
-                    width: w * 0.25,
+                    width: w * 0.20,
                     height: 37,
                     child: ElevatedButton(
                       onPressed: () {
@@ -194,7 +194,7 @@ class _loginState extends State<login> {
                         child: const Text(
                           'Sign Up/Create Account',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 13,
                             fontWeight: FontWeight.w400,
                             color: Color.fromARGB(255, 137, 137, 147),
                           ),
@@ -211,7 +211,7 @@ class _loginState extends State<login> {
                         child: const Text(
                           'Forgot Password',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 13,
                             fontWeight: FontWeight.w400,
                             color: Color.fromARGB(255, 202, 151, 145),
                           ),
@@ -227,7 +227,7 @@ class _loginState extends State<login> {
             ),
           ),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           const Text(
             'Login With',
@@ -251,7 +251,7 @@ class _loginState extends State<login> {
                 child: Container(
                   alignment: Alignment.center,
                   height: 50,
-                  width: 230,
+                  width: 160,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 49, 75, 185),
                     borderRadius: BorderRadius.only(
@@ -291,7 +291,7 @@ class _loginState extends State<login> {
                 child: Container(
                     alignment: Alignment.center,
                     height: 50,
-                    width: 230,
+                    width: 160,
                     decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 243, 182, 5),
                       borderRadius: BorderRadius.only(
@@ -302,7 +302,7 @@ class _loginState extends State<login> {
                     child: Row(
                       children: const [
                         SizedBox(
-                          width: 120,
+                          width: 40,
                         ),
                         Text(
                           "Google",
