@@ -95,12 +95,12 @@ class _loginState extends State<login> {
                               const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 2, color: Color.fromARGB(66, 12, 6, 6)),
+                                width: 1, color: Color.fromARGB(255, 12, 6, 6)),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 2,
+                                width: 1,
                                 color: Color.fromARGB(255, 28, 22, 20)),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -136,12 +136,12 @@ class _loginState extends State<login> {
                             const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 2, color: Color.fromARGB(66, 12, 6, 6)),
+                              width: 1, color: Color.fromARGB(255, 12, 6, 6)),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 2, color: Color.fromARGB(255, 28, 22, 20)),
+                              width: 1, color: Color.fromARGB(255, 28, 22, 20)),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
@@ -159,7 +159,7 @@ class _loginState extends State<login> {
                             builder: (context) => const Login()));
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 128, 186, 48),
+                          backgroundColor: const Color.fromARGB(255, 26, 182, 14),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(7),
                           )),
@@ -192,7 +192,7 @@ class _loginState extends State<login> {
                           ),
                         ),
                         child: const Text(
-                          'Sign Up/Create Account',
+                          'Sign Up/\nCreate Account',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
@@ -253,7 +253,7 @@ class _loginState extends State<login> {
                   height: 50,
                   width: 160,
                   decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 49, 75, 185),
+                    color: Color.fromARGB(255, 10, 27, 101),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30.0),
                       bottomLeft: Radius.circular(30.0),
@@ -293,7 +293,7 @@ class _loginState extends State<login> {
                     height: 50,
                     width: 160,
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 243, 182, 5),
+                      color: Color.fromARGB(255, 26, 182, 14),
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30.0),
                         bottomRight: Radius.circular(30.0),
@@ -302,7 +302,7 @@ class _loginState extends State<login> {
                     child: Row(
                       children: const [
                         SizedBox(
-                          width: 40,
+                          width: 30,
                         ),
                         Text(
                           "Google",

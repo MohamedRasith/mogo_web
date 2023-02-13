@@ -16,7 +16,7 @@ class _ProductDetails extends State<ProductDetails>{
   final TextEditingController comment = TextEditingController();
   @override
   Widget build(BuildContext context){
-    return DefaultTabController( length: 3,
+    return DefaultTabController( length: 4,
     child: Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size(150, 150),
@@ -40,13 +40,89 @@ class _ProductDetails extends State<ProductDetails>{
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:[
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(padding: const EdgeInsets.only(left: 20,right: 30),
+                        child: SingleChildScrollView(
+                            child:  GestureDetector(
+                              onTap: (){
+                                Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      ),
+                                      width: 100,
+                                      child:
+                                          Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+
+                                      ),
+
+
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                                      ),
+                                      width: 100,
+                                      child:
+                                          Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    width: 100,
+                                    child:
+                                    Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    ),
+                                    width: 100,
+                                    child:
+                                    Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+
+                                  ),
+                                ],
+                              ),
+                            )
+                        ),
+                      ),
+                    ]
+                ),
                 Image.asset("assets/images/shoe.png"),
                 const SizedBox(
                   width: 30,
                 ),
                 SizedBox(
                   width: 400,
-                  child: Expanded(child: Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -81,158 +157,90 @@ class _ProductDetails extends State<ProductDetails>{
                       const SizedBox(
                         height: 40,
                       ),
-                      Text("Add Items",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 40,
-                        width: 90,
-                        padding: const EdgeInsets.all(5),
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 2.0,
-                                spreadRadius: 2.0,
-                              ), //BoxShadow
-                            ]
-                        ),
-                        child: CountStepper(
-                          min: 0,
-                          textStyle: AppFonts.boldStyle(fontColor: Colors.black),
-                          max: 10,
-                        ),
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Text("Add Items",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                height: 40,
+                                width: 90,
+                                padding: const EdgeInsets.all(5),
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 2.0,
+                                        spreadRadius: 2.0,
+                                      ), //BoxShadow
+                                    ]
+                                ),
+                                child: CountStepper(
+                                  min: 0,
+                                  textStyle: AppFonts.boldStyle(fontColor: Colors.black),
+                                  max: 10,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 60,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 30),
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(25)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 2.0,
+                                  ), //BoxShadow
+                                  BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    spreadRadius: 0.0,
+                                  ), //BoxShadow
+                                ]
+                            ),
+                            height: 50,
+                            child: Center(child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("SHARE THIS",style: AppFonts.boldStyle(fontColor: const Color.fromARGB(
+                                    255, 7, 21, 110),fontSize: 15)),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const CircleAvatar(
+                                  backgroundColor: Color.fromARGB(
+                                      255, 7, 21, 110),
+                                  child: Padding(padding: EdgeInsets.all(2),
+                                    child:Icon(Icons.arrow_upward,color: Colors.white,),
+                                  ),),
+                              ],
+
+                            ),),
+                          ),
+                        ],
                       )
+
                     ],
                   )),
-                ),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:[
-                      Padding(padding: const EdgeInsets.only(top:10,left: 20),
-                        child:Text("Related Products", style: AppFonts.extraBoldStyle(fontSize: 20,fontColor: Colors.black),),),
 
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(padding: const EdgeInsets.only(left: 20),
-                        child: SingleChildScrollView(
-                            child:  GestureDetector(
-                              onTap: (){
-                                Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                      ),
-                                      width: 300,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
-                                          const SizedBox(
-                                            height: 50,
-                                          ),
-                                          Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-                                          Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                                          Container(
-                                            width: 50,
-                                            height: 30,
-                                            padding: const EdgeInsets.all(5),
-                                            decoration: const BoxDecoration(
-                                                color: Colors.lightGreen,
-                                                borderRadius: BorderRadius.all(Radius.circular(20))),
-                                            child: Row(
-                                              children: [
-                                                const Icon(Icons.star,color: Colors.white,size: 10,),
-                                                Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                  ),
-
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                                      ),
-                                      width: 300,
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
-                                          const SizedBox(
-                                            height: 50,
-                                          ),
-                                          Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
-                                          Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                                          Container(
-                                            width: 50,
-                                            height: 30,
-                                            padding: const EdgeInsets.all(5),
-                                            decoration: const BoxDecoration(
-                                                color: Colors.lightGreen,
-                                                borderRadius: BorderRadius.all(Radius.circular(20))),
-                                            child: Row(
-                                              children: [
-                                                const Icon(Icons.star,color: Colors.white,size: 10,),
-                                                Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-
-                                ],
-                              ),
-                            )
-                        ),
-                      ),
-                    ]
-                )
             ])
             ),
             const SizedBox(
               height: 30,
-            ),
-            Padding(padding: const EdgeInsets.only(left: 20,right: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("About This Product", style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
-                Text("A shoe is an item of footwear intended to protect and comfort the human foot. "
-                    "They are often worn with a sock. Shoes are also used as an item of decoration and fashion. "
-                    "The design of shoes has varied enormously through time and from culture to culture, with form originally being tied to function. "
-                    "Though the human foot can adapt to varied terrains and climate conditions, it is still vulnerable to environmental hazards such as sharp rocks and temperature extremes, which shoes protect against. "
-                    "Some shoes are worn as safety equipment, such as steel-toe boots which are required footwear at industrial worksites."
-                    "\n\nAdditionally, fashion has often dictated many design elements, such as whether shoes have very high heels or flat ones. Contemporary footwear varies widely in style, complexity and cost. Basic sandals may consist of only a thin sole and simple strap and be sold for a low cost. High fashion shoes made by famous designers may be made of expensive materials, use complex construction and sell for large sums of money. Some shoes are designed for specific purposes, such as boots designed specifically for mountaineering or skiing, while others have more generalized usage such as sneakers which have transformed from a special purpose sport shoe into a general use shoe."
-                  ,style: AppFonts.lightStyle(
-                      fontColor: Colors.black,fontSize: 15
-                  ),),
-              ],
-            ),
-            ),
-            const SizedBox(
-              height: 50,
             ),
         Padding(padding: const EdgeInsets.only(left: 20,right: 20),
           child:SizedBox(
@@ -246,6 +254,7 @@ class _ProductDetails extends State<ProductDetails>{
                     borderRadius: BorderRadius.all(Radius.circular(25)),
                     color: Colors.white),
                 tabs: const [
+                  Tab(text: "About Product"),
                   Tab(text: "Company Reviews"),
                   Tab(text: "Discussions"),
                   Tab(text: "Customer Reviews"),
@@ -258,16 +267,21 @@ class _ProductDetails extends State<ProductDetails>{
             ),
         Padding(padding: const EdgeInsets.only(left: 20,right: 20),
           child:SizedBox(
-              height: MediaQuery.of(this.context).size.height,
+            height: 450,
               child: TabBarView(
                 children: [
+                  about(),
                   chat(),
                   discussion(),
                   cutomerReview()
                 ],
               ),
             ),
-        )
+        ),
+            related(),
+            const SizedBox(
+              height: 30,
+            )
           ],
         ),
       ),
@@ -334,11 +348,11 @@ class _ProductDetails extends State<ProductDetails>{
                     width: 20,
                   ),
                   Container(
-                    width: 50,
-                    height: 30,
+                    height: 50,
+                    padding: const EdgeInsets.all(10),
                     color: const Color.fromARGB(
                         255, 7, 21, 110),
-                    child: Center(child: Text("B2B",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 20)),),
+                    child: Center(child: Text("B2B Request",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 20)),),
                   ),
                   const SizedBox(
                     width: 20,
@@ -684,6 +698,13 @@ class _ProductDetails extends State<ProductDetails>{
               ],
             )
         ),
+        const SizedBox(
+          height: 50,
+        ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: chatField(),
+        )
 
       ],
     ),
@@ -809,12 +830,11 @@ class _ProductDetails extends State<ProductDetails>{
         const SizedBox(
           height: 30,
         ),
-        Row(
-          children: [
             Container(
+              width: 300,
               padding: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.green,
                   borderRadius: BorderRadius.all(Radius.circular(25)),
                   boxShadow: [
                     BoxShadow(
@@ -829,34 +849,6 @@ class _ProductDetails extends State<ProductDetails>{
                       spreadRadius: 0.0,
                     ), //BoxShadow
                   ]
-              ),
-              height: 50,
-              child: Center(child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Text("SHARE THIS",style: AppFonts.boldStyle(fontColor: const Color.fromARGB(
-          255, 7, 21, 110),fontSize: 15)),
-      const SizedBox(
-        width: 10,
-      ),
-      const CircleAvatar(
-        backgroundColor: Color.fromARGB(
-            255, 7, 21, 110),
-        child: Padding(padding: EdgeInsets.all(2),
-          child:Icon(Icons.arrow_upward,color: Colors.white,),
-        ),),
-    ],
-
-    ),),
-            ),
-            const SizedBox(
-              width: 25,
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(25)),
               ),
               height: 50,
               child: Center(child: Row(
@@ -876,9 +868,259 @@ class _ProductDetails extends State<ProductDetails>{
               ),),
             ),
           ],
-        )
+    );
+  }
+  chatField(){
+    return Container(
+      margin: const EdgeInsets.all(15.0),
+      height: 61,
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(35.0),
+                boxShadow: const [
+                  BoxShadow(
+                      offset: Offset(0, 3),
+                      blurRadius: 5,
+                      color: Colors.grey)
+                ],
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                      icon: Icon(Icons.face , color: Colors.blue[900],), onPressed: () {}),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: "Type Something...",
+                          hintStyle: TextStyle( color:    Colors.grey[300]),
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.photo_camera ,  color: Colors.blue[900]),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.attach_file ,  color: Colors.blue[900]),
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(width: 15),
+          Container(
+            padding: const EdgeInsets.all(15.0),
+            decoration:  BoxDecoration(
+                color: Colors.blue[900], shape: BoxShape.circle),
+            child: InkWell(
+              child: const Icon(
+                Icons.keyboard_voice,
+                color: Colors.white,
+              ),
+              onLongPress: () {
+              },
+            ),
+          )
+        ],
+      ),
+    ) ;
+  }
+  about(){
+    return Padding(padding: const EdgeInsets.only(left: 20,right: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("About This Product", style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
+          Text("A shoe is an item of footwear intended to protect and comfort the human foot. "
+              "They are often worn with a sock. Shoes are also used as an item of decoration and fashion. "
+              "The design of shoes has varied enormously through time and from culture to culture, with form originally being tied to function. "
+              "Though the human foot can adapt to varied terrains and climate conditions, it is still vulnerable to environmental hazards such as sharp rocks and temperature extremes, which shoes protect against. "
+              "Some shoes are worn as safety equipment, such as steel-toe boots which are required footwear at industrial worksites."
+              "\n\nAdditionally, fashion has often dictated many design elements, such as whether shoes have very high heels or flat ones. Contemporary footwear varies widely in style, complexity and cost. Basic sandals may consist of only a thin sole and simple strap and be sold for a low cost. High fashion shoes made by famous designers may be made of expensive materials, use complex construction and sell for large sums of money. Some shoes are designed for specific purposes, such as boots designed specifically for mountaineering or skiing, while others have more generalized usage such as sneakers which have transformed from a special purpose sport shoe into a general use shoe."
+            ,style: AppFonts.lightStyle(
+                fontColor: Colors.black,fontSize: 15
+            ),),
+        ],
+      ),
+    );
+  }
+  related(){
+    return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 190),
+        child:Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:[
+              Padding(padding: const EdgeInsets.only(top:20,bottom: 20,left: 10),
+                child:Text("Related Products", style: AppFonts.extraBoldStyle(fontSize: 20,fontColor: Colors.black),),),
 
-      ],
+
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(padding: const EdgeInsets.only(left: 20),
+                child: SizedBox(
+                    height: 240,
+                    child:  GestureDetector(
+                      onTap: (){
+                        Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                              ),
+                              width: 200,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                  Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                  Container(
+                                    width: 50,
+                                    height: 30,
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: const BoxDecoration(
+                                        color: Colors.lightGreen,
+                                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.star,color: Colors.white,size: 10,),
+                                        Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+
+                          const SizedBox(
+                            width: 50,
+                          ),
+                          Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                              ),
+                              width: 200,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                  Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                  Container(
+                                    width: 50,
+                                    height: 30,
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: const BoxDecoration(
+                                        color: Colors.lightGreen,
+                                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.star,color: Colors.white,size: 10,),
+                                        Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                          const SizedBox(
+                            width: 50,
+                          ),
+                          Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                              ),
+                              width: 200,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                  Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                  Container(
+                                    width: 50,
+                                    height: 30,
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: const BoxDecoration(
+                                        color: Colors.lightGreen,
+                                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.star,color: Colors.white,size: 10,),
+                                        Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                          const SizedBox(
+                            width: 50,
+                          ),
+                          Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                              ),
+                              width: 200,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset("assets/images/shoe.png",width: double.maxFinite,height: 80,),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 20,fontColor: Colors.black),),
+                                  Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                                  Container(
+                                    width: 50,
+                                    height: 30,
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: const BoxDecoration(
+                                        color: Colors.lightGreen,
+                                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.star,color: Colors.white,size: 10,),
+                                        Text("4.0", style: AppFonts.boldStyle(fontColor: Colors.white),)
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                          ),
+                        ],
+                      ),
+                    )
+                ),
+              ),
+            ]
+        )
     );
   }
 }

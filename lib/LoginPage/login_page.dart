@@ -2,6 +2,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:mogo_web/CustomWidgets/ExploreAll/explore_all.dart';
 import 'package:mogo_web/Products/product_details.dart';
 import 'package:mogo_web/fonts.dart';
 import 'package:video_player/video_player.dart';
@@ -57,11 +58,11 @@ class _Login extends State<Login>{
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 60,
+                    height: 20,
                   ),
                   videos(),
                   const SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
                   explore(),
                   const SizedBox(
@@ -304,11 +305,11 @@ class _Login extends State<Login>{
                   width: 20,
                 ),
                 Container(
-                  width: 50,
-                  height: 30,
+                  height: 50,
+                  padding: const EdgeInsets.all(10),
                   color: const Color.fromARGB(
                       255, 7, 21, 110),
-                  child: Center(child: Text("B2B",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 20)),),
+                  child: Center(child: Text("B2B Request",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 20)),),
                 ),
                 const SizedBox(
                   width: 20,
@@ -381,20 +382,24 @@ class _Login extends State<Login>{
 
   videos(){
     return CarouselSlider(
-      options: CarouselOptions(height: 380.0,enlargeCenterPage: true),
+      options: CarouselOptions(height: 380.0),
       items: [
     Container(
+      margin: const EdgeInsets.only(left: 8,right: 8),
     decoration:
-    BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.black),
-    padding: const EdgeInsets.all(10.0),
+    BoxDecoration(borderRadius: BorderRadius.circular(25), image: const DecorationImage(
+        image: AssetImage("images/vid.png"),
+        fit: BoxFit.cover)),
     child: Chewie(controller: _chewieController)
     ),
         Container(
             decoration:
             BoxDecoration(
-              borderRadius: BorderRadius.circular(10),color: Colors.black,
+              borderRadius: BorderRadius.circular(25),
+                image: const DecorationImage(
+                    image: AssetImage("images/vid.png"),
+                    fit: BoxFit.cover)
             ),
-            padding: const EdgeInsets.all(10.0),
             child: Chewie(controller: _chewieController)
         ),
 
@@ -423,7 +428,7 @@ class _Login extends State<Login>{
                     const CircleAvatar(
                       radius: 70,
                       backgroundColor:Color.fromARGB(
-                          255, 7, 21, 110),
+                          255, 2, 17, 105),
                       child: Padding(padding:EdgeInsets.all(10),
                           child:Icon(Icons.play_circle_filled_sharp,size: 50,color: Colors.white,)
                       ),),
@@ -435,14 +440,14 @@ class _Login extends State<Login>{
               ),
 
               const SizedBox(
-                width: 100,
+                width: 120,
               ),
               Column(
                   children:[
                     const CircleAvatar(
                         radius: 70,
                         backgroundColor: Color.fromARGB(
-                            255, 7, 21, 110),
+                            255, 2, 17, 105),
                         child:Padding(padding: EdgeInsets.all(10),
                             child: Icon(Icons.shopping_cart,size: 50,color: Colors.white,))
                     ),
@@ -454,14 +459,14 @@ class _Login extends State<Login>{
               ),
 
               const SizedBox(
-                width: 100,
+                width: 120,
               ),
               Column(
                   children:[
                     const CircleAvatar(
                         radius: 70,
                         backgroundColor: Color.fromARGB(
-                            255, 7, 21, 110),
+                            255, 2, 17, 105),
                         child: Padding(padding: EdgeInsets.all(10),
                             child: Icon(Icons.handshake,size: 50,color: Colors.white,))
                     ),
@@ -473,23 +478,28 @@ class _Login extends State<Login>{
               ),
 
               const SizedBox(
-                width: 100,
+                width: 120,
               ),
-              Column(
-                  children:[
-                    const CircleAvatar(
-                        radius: 70,
-                        backgroundColor: Color.fromARGB(
-                            255, 7, 21, 110),
-                        child: Padding(padding: EdgeInsets.all(10),
-                            child: Icon(Icons.keyboard_arrow_right,size: 50,color: Colors.white,))
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text("Explore All",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
-                  ]
-              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ExploreAll()));
+                },
+                child: Column(
+                    children:[
+                      const CircleAvatar(
+                          radius: 70,
+                          backgroundColor: Color.fromARGB(
+                              255, 2, 17, 105),
+                          child: Padding(padding: EdgeInsets.all(10),
+                              child: Icon(Icons.keyboard_arrow_right,size: 50,color: Colors.white,))
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text("Explore All",style: AppFonts.regularStyle(fontSize: 20,fontColor: Colors.black),) ,
+                    ]
+                ),
+              )
 
             ],
           )
