@@ -30,7 +30,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Body(),
+      body: Container(
+        height: double.maxFinite,
+        decoration: const BoxDecoration(
+        image: DecorationImage(image: AssetImage("assets/images/backb.jpg"),
+    fit: BoxFit.cover,
+    colorFilter: ColorFilter.mode(Colors.black26, BlendMode.lighten)
+    )
+    ),
+    child: Body()),
       bottomNavigationBar: bottom(),
     );
   }
