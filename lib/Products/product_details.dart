@@ -1,4 +1,5 @@
 
+
 import 'package:count_stepper/count_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:mogo_web/LoginPage/login_page.dart';
@@ -14,6 +15,7 @@ class ProductDetails extends StatefulWidget{
 class _ProductDetails extends State<ProductDetails>{
   List<String> countries = ["Brazil", "Nepal", "India", "China", "USA", "Canada"];
   final TextEditingController comment = TextEditingController();
+  bool? isChecked = true;
   @override
   Widget build(BuildContext context){
     return DefaultTabController( length: 4,
@@ -29,7 +31,7 @@ class _ProductDetails extends State<ProductDetails>{
   body(){
     return SingleChildScrollView(
       child: Container(
-        color: const Color.fromARGB(15, 15, 15, 15),
+        color: Colors.white,
         child: Column(
 
           children: [
@@ -133,29 +135,7 @@ class _ProductDetails extends State<ProductDetails>{
                       ),
                       colorAndsize(),
                       const SizedBox(
-                        height: 40,
-                      ),
-                      Row(
-                        children: [
-                          Text("Material Type:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
-                          const SizedBox(
-                            width: 100,
-                          ),
-                          Text("Dealer:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
-                        ],
-                      ),
-
-                      Row(
-                        children: [
-                          Text("Strong Rubber",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                          const SizedBox(
-                            width: 80,
-                          ),
-                          Text("Enterprises",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 40,
+                        height: 10,
                       ),
                       Row(
                         children: [
@@ -189,11 +169,80 @@ class _ProductDetails extends State<ProductDetails>{
 
                             ],
                           ),
+
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Text("Material Type:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
                           const SizedBox(
-                            width: 60,
+                            width: 100,
+                          ),
+                          Text("Dealer:",style: AppFonts.regularStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      ),
+
+                      Row(
+                        children: [
+                          Text("Strong Rubber",style: AppFonts.boldStyle(fontSize: 10,fontColor: Colors.black),),
+                          const SizedBox(
+                            width: 100,
+                          ),
+                          Text("Enterprises",style: AppFonts.boldStyle(fontSize: 10,fontColor: Colors.black),),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 200,
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(
+                                  255, 26, 182, 14),
+                                borderRadius: BorderRadius.all(Radius.circular(25)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 2.0,
+                                  ), //BoxShadow
+                                  BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    spreadRadius: 0.0,
+                                  ), //BoxShadow
+                                ]
+                            ),
+                            height: 50,
+                            child: Center(child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("ADD TO CART",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 15)),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const CircleAvatar(
+                                  backgroundColor:Colors.white,
+                                  child: Padding(padding: EdgeInsets.all(2),
+                                    child:Icon(Icons.arrow_forward,color: Color.fromARGB(
+                                        255, 26, 182, 14),
+                                  ),
+                                  ),),
+                              ],
+
+                            ),),
+                          ),
+                          const SizedBox(
+                            width: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(top: 30),
                             padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                                 color: Colors.white,
@@ -234,6 +283,7 @@ class _ProductDetails extends State<ProductDetails>{
                         ],
                       )
 
+
                     ],
                   )),
 
@@ -245,21 +295,30 @@ class _ProductDetails extends State<ProductDetails>{
         Padding(padding: const EdgeInsets.only(left: 20,right: 20),
           child:SizedBox(
               height: 30,
-              child: TabBar(
-                labelColor: Colors.black,
-                labelStyle: AppFonts.extraBoldStyle(fontColor: Colors.black),
-                indicatorColor: Colors.white,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicator: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(25)),
-                    color: Colors.white),
-                tabs: const [
-                  Tab(text: "About Product"),
-                  Tab(text: "Company Reviews"),
-                  Tab(text: "Discussions"),
-                  Tab(text: "Customer Reviews"),
-                ],
-              ),
+              child: Container(
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 44, 6, 108),
+                  borderRadius: BorderRadius.all(Radius.circular(25))
+                ),
+                child: TabBar(
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.white,
+                  labelStyle: AppFonts.extraBoldStyle(fontColor: Colors.white),
+                  indicatorColor: const Color.fromARGB(
+                    255, 26, 182, 14),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicator: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(25)),
+                      color: Color.fromARGB(
+                          255, 26, 182, 14),),
+                  tabs: const [
+                    Tab(text: "About Product"),
+                    Tab(text: "Company Reviews"),
+                    Tab(text: "Discussions"),
+                    Tab(text: "Customer Reviews"),
+                  ],
+                ),
+              )
             ),
         ),
             const SizedBox(
@@ -296,80 +355,89 @@ class _ProductDetails extends State<ProductDetails>{
   appBar(){
     return Column(
       children: [
-        Expanded(
-          child: Container(
-              height: 100,
-              color: const Color.fromARGB(5, 5, 5, 5),
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const Login()));
-                    },
-                    child: const Icon(Icons.arrow_back_sharp,size: 30,color: Color.fromARGB(255, 7, 21, 110),),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Image.asset("assets/images/logo.png",width: 120,height: 120,),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Flexible(child:
-                  Container(
+        Container(
+            height: 100,
+            color: const Color.fromARGB(15, 15, 15, 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
+                  },
+                  child: const Icon(Icons.arrow_back,color: Color.fromARGB(255, 44, 6, 108),),
+                ),
+
+                const SizedBox(
+                  width: 10,
+                ),
+                Image.asset("assets/images/logo.png",width: 120,height: 120,),
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                    width: 400,
+                    height: 40,
                     decoration: myBoxDecoration(), //             <--- BoxDecoration here
-                    child: TextField(
-                      cursorColor: Colors.grey,
-                      decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide.none
+                    child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 400,
+                          child: TextField(
+                            cursorColor: Colors.grey,
+                            decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(25),
+                                    borderSide: BorderSide.none
+                                ),
+                                hintText: 'Search',
+                                contentPadding: const EdgeInsets.only(left: 20),
+                                hintStyle: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15
+                                ),
+                                suffixIcon: const Icon(Icons.search)
+                            ),
                           ),
-                          hintText: 'Search',
-                          hintStyle: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 18
-                          ),
-                          suffixIcon: Container(
-                            padding: const EdgeInsets.all(15),
-                            width: 18,
-                            child: const Icon(Icons.search),
-                          )
-                      ),
-                    ),
+                        )
+                      ],
+                    )
+                ),
+
+
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  height: 40,
+                  width: 240,
+                  padding: const EdgeInsets.all(8),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(25)),
+                    color: Color.fromARGB(
+                        255, 26, 182, 14),
                   ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    height: 50,
-                    padding: const EdgeInsets.all(10),
-                    color: const Color.fromARGB(
-                        255, 7, 21, 110),
-                    child: Center(child: Text("B2B Request",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 20)),),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Icon(Icons.shopping_cart,color: Color.fromARGB(
-                      255, 7, 21, 110),size: 30,),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Icon(Icons.person_pin,color: Color.fromARGB(
-                      255, 7, 21, 110),size: 30,),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                ],
-              )
-          ),),
+                  child: Center(child: Text("B2B Registration",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 15)),),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                const Icon(Icons.shopping_cart,color: Color.fromARGB(
+                    255, 7, 21, 110),size: 30,),
+                const SizedBox(
+                  width: 20,
+                ),
+                const Icon(Icons.person_pin,color: Color.fromARGB(
+                    255, 7, 21, 110),size: 30,),
+                const SizedBox(
+                  width: 20,
+                ),
+              ],
+            )
+        ),
         Container(
           color: const Color.fromARGB(
               255, 7, 21, 110),
@@ -378,16 +446,21 @@ class _ProductDetails extends State<ProductDetails>{
             labelColor: Colors.white,
             labelStyle: AppFonts.boldStyle(fontColor: Colors.black,fontSize: 15),
             unselectedLabelColor: Colors.white,
-            indicatorColor: Colors.lightGreen,
+            indicatorColor: const Color.fromARGB(
+    255, 26, 182, 14),
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: const BoxDecoration(
-                color: Colors.lightGreen),
+                color: Color.fromARGB(
+    255, 26, 182, 14),
+    ),
             tabs: const [
               Tab(icon: Icon(Icons.explore,color: Colors.white,),),
               Tab(text: "Trending"),
               Tab(text: "Channels"),
               Tab(text: "Online Shop"),
               Tab(text: "India"),
+              Tab(text: "Tour Operator"),
+              Tab(text: "Insurance"),
               Tab(text: "World"),
               Tab(text: "News"),
             ],
@@ -724,13 +797,16 @@ class _ProductDetails extends State<ProductDetails>{
           child:  ListView(
           scrollDirection: Axis.horizontal,
           children: <Widget>[
-            Container(
-              decoration: const BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.all(Radius.circular(50))
-              ),
-              width: 50,
-            ),
+          Checkbox(
+            value: isChecked,
+            fillColor: MaterialStateColor.resolveWith((states) => Colors.purple),
+            shape: CircleBorder(),
+            onChanged: (bool? value) {
+              setState(() {
+                isChecked = value;
+              });
+            },
+          ),
 
             const SizedBox(
               width: 20,
@@ -828,45 +904,9 @@ class _ProductDetails extends State<ProductDetails>{
           ),
         ),
         const SizedBox(
-          height: 30,
+          height: 10,
         ),
-            Container(
-              width: 300,
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(25)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 2.0,
-                      spreadRadius: 2.0,
-                    ), //BoxShadow
-                    BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 0.0,
-                      spreadRadius: 0.0,
-                    ), //BoxShadow
-                  ]
-              ),
-              height: 50,
-              child: Center(child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("ADD TO CART",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 15)),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  const CircleAvatar(
-                    backgroundColor:Colors.white,
-                    child: Padding(padding: EdgeInsets.all(2),
-                      child:Icon(Icons.arrow_forward,color: Colors.green,),
-                    ),),
-                ],
 
-              ),),
-            ),
           ],
     );
   }
@@ -951,7 +991,18 @@ class _ProductDetails extends State<ProductDetails>{
   }
   related(){
     return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 190),
+        margin: const EdgeInsets.symmetric(horizontal: 100),
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 1,
+                  blurRadius: 10
+
+              )]
+        ),
         child:Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children:[
@@ -993,7 +1044,9 @@ class _ProductDetails extends State<ProductDetails>{
                                     height: 30,
                                     padding: const EdgeInsets.all(5),
                                     decoration: const BoxDecoration(
-                                        color: Colors.lightGreen,
+    color: Color.fromARGB(
+    255, 26, 182, 14),
+
                                         borderRadius: BorderRadius.all(Radius.circular(20))),
                                     child: Row(
                                       children: [
@@ -1007,7 +1060,7 @@ class _ProductDetails extends State<ProductDetails>{
                           ),
 
                           const SizedBox(
-                            width: 50,
+                            width: 60,
                           ),
                           Container(
                               padding: const EdgeInsets.all(10),
@@ -1030,7 +1083,9 @@ class _ProductDetails extends State<ProductDetails>{
                                     height: 30,
                                     padding: const EdgeInsets.all(5),
                                     decoration: const BoxDecoration(
-                                        color: Colors.lightGreen,
+    color: Color.fromARGB(
+    255, 26, 182, 14),
+
                                         borderRadius: BorderRadius.all(Radius.circular(20))),
                                     child: Row(
                                       children: [
@@ -1043,7 +1098,7 @@ class _ProductDetails extends State<ProductDetails>{
                               )
                           ),
                           const SizedBox(
-                            width: 50,
+                            width: 60,
                           ),
                           Container(
                               padding: const EdgeInsets.all(10),
@@ -1066,7 +1121,9 @@ class _ProductDetails extends State<ProductDetails>{
                                     height: 30,
                                     padding: const EdgeInsets.all(5),
                                     decoration: const BoxDecoration(
-                                        color: Colors.lightGreen,
+    color: Color.fromARGB(
+    255, 26, 182, 14),
+
                                         borderRadius: BorderRadius.all(Radius.circular(20))),
                                     child: Row(
                                       children: [
@@ -1079,7 +1136,7 @@ class _ProductDetails extends State<ProductDetails>{
                               )
                           ),
                           const SizedBox(
-                            width: 50,
+                            width: 60,
                           ),
                           Container(
                               padding: const EdgeInsets.all(10),
@@ -1102,7 +1159,9 @@ class _ProductDetails extends State<ProductDetails>{
                                     height: 30,
                                     padding: const EdgeInsets.all(5),
                                     decoration: const BoxDecoration(
-                                        color: Colors.lightGreen,
+    color: Color.fromARGB(
+    255, 26, 182, 14),
+
                                         borderRadius: BorderRadius.all(Radius.circular(20))),
                                     child: Row(
                                       children: [

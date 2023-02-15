@@ -4,6 +4,7 @@ import 'package:mogo_web/CustomWidgets/custom_scroll_behaviour.dart';
 import 'package:mogo_web/HomeTab/home_view.dart';
 import 'package:mogo_web/LoginPage/login_page.dart';
 import 'package:mogo_web/login.dart';
+import 'package:mogo_web/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins'
       ),
-      home: const login()
+      home: const Login()
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mogo_web/LoginPage/login_page.dart';
 
 
@@ -14,7 +15,16 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Body(),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage("assets/images/backb.jpg"),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(Colors.white70, BlendMode.lighten)
+          )
+        ),
+        child: Body(),
+      ),
+      bottomNavigationBar: bottom(),
     );
   }
 
@@ -25,7 +35,7 @@ class _loginState extends State<login> {
       child: Column(
         children: [
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           Center(
             child: Image.asset(
@@ -48,17 +58,15 @@ class _loginState extends State<login> {
             height: 20,
           ),
           Container(
-            alignment: Alignment.center,
             height: 330,
             width: 335,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
-                  blurRadius: 3.0, // soften the shadow
-                  spreadRadius: 1.0, //extend the shadow
+                  blurRadius: 2, // soften the shadow//extend the shadow
                 ),
               ],
             ),
@@ -95,12 +103,12 @@ class _loginState extends State<login> {
                               const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
                           enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 1, color: Color.fromARGB(255, 12, 6, 6)),
+                                width: 0.3, color: Color.fromARGB(255, 12, 6, 6)),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
-                                width: 1,
+                                width: 0.3,
                                 color: Color.fromARGB(255, 28, 22, 20)),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -136,12 +144,12 @@ class _loginState extends State<login> {
                             const EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 10.0),
                         enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 1, color: Color.fromARGB(255, 12, 6, 6)),
+                              width: 0.3, color: Color.fromARGB(255, 12, 6, 6)),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              width: 1, color: Color.fromARGB(255, 28, 22, 20)),
+                              width: 0.3, color: Color.fromARGB(255, 28, 22, 20)),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
@@ -244,12 +252,11 @@ class _loginState extends State<login> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                width: 50,
+                width: 35,
               ),
               InkWell(
                 onTap: () {},
                 child: Container(
-                  alignment: Alignment.center,
                   height: 50,
                   width: 160,
                   decoration: const BoxDecoration(
@@ -262,7 +269,7 @@ class _loginState extends State<login> {
                   child: Row(
                     children: const [
                       SizedBox(
-                        width: 20,
+                        width: 40,
                       ),
                       Icon(
                         Icons.facebook_sharp,
@@ -289,7 +296,7 @@ class _loginState extends State<login> {
               InkWell(
                 onTap: () {},
                 child: Container(
-                    alignment: Alignment.center,
+
                     height: 50,
                     width: 160,
                     decoration: const BoxDecoration(
@@ -300,11 +307,11 @@ class _loginState extends State<login> {
                       ),
                     ),
                     child: Row(
-                      children: const [
-                        SizedBox(
+                      children:  [
+                        const SizedBox(
                           width: 30,
                         ),
-                        Text(
+                        const Text(
                           "Google",
                           style: TextStyle(
                             fontSize: 14,
@@ -312,16 +319,12 @@ class _loginState extends State<login> {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
-                        Image(
-                          width: 30,
-                          height: 30,
-                          image: AssetImage(
-                            'assets/images/google.png',
+                        SvgPicture.asset(
+                            'assets/images/google.svg',
                           ),
-                        )
                       ],
                     )),
               ),
@@ -331,23 +334,26 @@ class _loginState extends State<login> {
             ],
           ),
           const SizedBox(
-            height: 57,
+            height: 30,
           ),
-          Row(
-            children: [
-              Container(
-                height: 7,
-                width: 768,
-                color: const Color.fromARGB(255, 7, 11, 138),
-              ),
-              Container(
-                height: 7,
-                width: 768,
-                color: const Color.fromARGB(255, 99, 168, 103),
-              ),
+          const Text("Copyright © 2023 MOGO. All rights reserved")
+
             ],
           ),
-        ],
+    );
+  }
+  bottom(){
+    return Container(
+      height: 7,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,//Starting point
+          end: Alignment.centerRight,//Ending point
+          stops: [0.5, 0], //First Part is the amount of space the first color has
+          //occupy and the second parameter is the space that is to be occupied by
+          //mixture of both colors.
+          colors: [Color.fromARGB(255, 10, 27, 101), Colors.green], // List of colors
+        ),
       ),
     );
   }

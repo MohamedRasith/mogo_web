@@ -385,8 +385,8 @@ class _ExploreAllState extends State<ExploreAll> {
                   Container(
                     height: 50,
                     padding: const EdgeInsets.all(10),
-                    color: const Color.fromARGB(
-                        255, 7, 21, 110),
+                    color:  const Color.fromARGB(
+                      255, 26, 182, 14),
                     child: Center(child: Text("B2B Request",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 20)),),
                   ),
                   const SizedBox(
@@ -423,6 +423,8 @@ class _ExploreAllState extends State<ExploreAll> {
               Tab(text: "Channels"),
               Tab(text: "Online Shop"),
               Tab(text: "India"),
+              Tab(text: "Tour Operator"),
+              Tab(text: "Insurance"),
               Tab(text: "World"),
               Tab(text: "News"),
             ],
