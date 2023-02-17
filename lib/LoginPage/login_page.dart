@@ -1,4 +1,5 @@
 
+import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mogo_web/CustomWidgets/choice.dart';
 import 'package:mogo_web/Products/product_details.dart';
 import 'package:mogo_web/fonts.dart';
-import 'package:mogo_web/login.dart';
 import 'package:mogo_web/login_page.dart';
 import 'package:video_player/video_player.dart';
 
@@ -18,8 +18,13 @@ class Login extends StatefulWidget{
   @override
   State<Login> createState() => _Login();
 }
-class _Login extends State<Login>{
-late final Choice choice;
+class _Login extends State<Login> with TickerProviderStateMixin{
+  int selectedTabIndex = 0;
+  TabController? tabController;
+  TabController? tabController2;
+  TabController? tabController3;
+
+  late final Choice choice;
   List<String> titles = [
     "Trending",
     "Channels",
@@ -71,14 +76,34 @@ List<IconData> explores2 = [
   ];
   List<String> countries = ["Videos", "Shop", "Insurance", "Electronics", "Explore all"];
 List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living Linen", "Explore all"];
+
   final TextEditingController comment = TextEditingController();
   late VideoPlayerController _videoPlayerController1;
   late ChewieController _chewieController;
+
   @override
   void initState() {
+    tabController = TabController(length: 5, vsync: this);
+    tabController!.addListener(() {
+      setState(() {
+        selectedTabIndex = tabController!.index;
+      });
+    });
+    tabController2 = TabController(length: 5, vsync: this);
+    tabController2!.addListener(() {
+      setState(() {
+        selectedTabIndex = tabController2!.index;
+      });
+    });
+    tabController3 = TabController(length: 2, vsync: this);
+    tabController3!.addListener(() {
+      setState(() {
+        selectedTabIndex = tabController3!.index;
+      });
+    });
     super.initState();
     _videoPlayerController1 = VideoPlayerController.network(
-        'https://firebasestorage.googleapis.com/v0/b/pwsinovatiq.appspot.com/o/videoplayback.mp4?alt=media&token=1280b30c-f0c5-40d8-ac08-bcb1f783429f');
+        'https://firebasestorage.googleapis.com/v0/b/pwsinovatiq.appspot.com/o/videoplayback_c2nHPPGm.mp4?alt=media&token=8feb4194-a781-4494-b651-99afbb1e3ee4');
 
 
 
@@ -86,8 +111,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
       allowFullScreen: true,
-      aspectRatio: 19/9,
-      autoPlay: true,
+      autoPlay: false,
       looping: false,
     );
 
@@ -96,15 +120,15 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
 
   @override
   Widget build(BuildContext context){
-    return DefaultTabController(length: 7, child: Scaffold(
+    return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size(206, 206),
+        preferredSize: const Size(170, 170),
         child: appBar(),
       ),
       backgroundColor: Colors.white,
       body: body(),
 
-    ));
+    );
   }
   body(){
     return SingleChildScrollView(
@@ -115,9 +139,20 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   videos(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CarouselIndicator(
+                    count: 5,
+                    index: 0,
+                    height: 10,
+                    activeColor: Colors.green,
+                    color: Colors.grey.shade300,
+                    cornerRadius: 20,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -129,9 +164,32 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   const SizedBox(
                     height: 40,
                   ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 120),
+                padding: const EdgeInsets.only(top: 60,bottom: 60),
 
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,//Starting point
+                      end: Alignment.bottomRight,//Ending point
+                      //First Part is the amount of space the first color has
+                      //occupy and the second parameter is the space that is to be occupied by
+                      //mixture of both colors.
+                      colors: [Color(0xff32325E), Color(
+                          0xFF68AB41)], // List of colors
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 1,
+                          blurRadius: 10
+
+                      )]
+                ),
+                child:
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Column(
                         children: [
@@ -141,6 +199,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                               'assets/images/card.png',
                               width: 140,
                               height: 50,
+                              color: Colors.white,
                             ),
                           ),
                           const SizedBox(
@@ -150,6 +209,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                             "Secure Payment",
                             style: TextStyle(
                               fontSize: 16,
+                              color: Colors.white
                             ),
                           ),
                         ],
@@ -174,6 +234,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                             "Ontime Delivery",
                             style: TextStyle(
                               fontSize: 16,
+                                color: Colors.white
                             ),
                           ),
                         ],
@@ -189,6 +250,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                               'assets/images/return.png',
                               width: 140,
                               height: 50,
+                                color: Colors.white
                             ),
                           ),
                           const SizedBox(
@@ -198,6 +260,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                             "Easy Returns",
                             style: TextStyle(
                               fontSize: 16,
+                                color: Colors.white
                             ),
                           ),
                         ],
@@ -222,12 +285,14 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                             "24/7 Support",
                             style: TextStyle(
                               fontSize: 16,
+                                color: Colors.white
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
+              ),
                   const SizedBox(
                     height: 60,
                   ),
@@ -251,14 +316,14 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          padding: const EdgeInsets.only(top: 10,bottom: 10),
-          color: Color(0xFF68AB41),
+          padding: const EdgeInsets.only(top: 6,bottom: 6),
+          color: const Color(0xFF68AB41),
           child: Center(child: Text("Special Discount 50% for mens wear till saturday",style: AppFonts.mediumStyle(fontSize: 15,fontColor: Colors.white),),)
         ),
 
           Container(
-            height: 100,
-            padding: const EdgeInsets.only(left: 170),
+            height: 70,
+            padding: const EdgeInsets.only(left: 120),
             color: const Color.fromARGB(15, 15, 15, 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -266,9 +331,9 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                 const SizedBox(
                   width: 10,
                 ),
-                Image.asset("assets/images/logo.png",width: 120,height: 120,),
+                Image.asset("assets/images/logo.png",width: 150,height: 60,),
                 const SizedBox(
-                  width: 20,
+                  width: 40,
                 ),
                 Container(
                   height: 40,
@@ -277,7 +342,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 600,
+                        width: 670,
                         child: TextField(
                           cursorColor: Colors.grey,
                           decoration: InputDecoration(
@@ -311,14 +376,10 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   )
                   ),
 
-
                 const SizedBox(
-                  width: 20,
+                  width: 40,
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                const Icon(Icons.favorite_border,color: Color(0xff32325E),size: 30,),
+                const Icon(Icons.favorite,color: Color(0xFF68AB41),size: 30,),
                 const SizedBox(
                   width: 20,
                 ),
@@ -331,77 +392,104 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                 const SizedBox(
                   width: 20,
                 ),
-                Icon(Icons.shopping_cart,color: Color(0xff32325E),size: 30),
+                const Icon(Icons.shopping_cart,color: Color(0xff32325E),size: 30),
                 const SizedBox(
                   width: 10,
                 ),
-                Text("My Cart\n Rs.0.0",)
+                const Text("My Cart\n Rs.0.0",)
               ],
             )
         ),
         Container(
-          color:Color(0xff32325E),
+          color:const Color(0xff32325E),
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-
-              Container(
-                height: 40,
-                margin: const EdgeInsets.only(left: 160,right: 10),
-                padding: const EdgeInsets.only(left: 10,right: 10),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 1,
-                          spreadRadius: 1
-                      )
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(10),
+              GestureDetector(
+                onTap: (){
+                  showMenu(
+                      context: context,
+                      position: const RelativeRect.fromLTRB(100, 170, 100, 100),
+                      items: List.generate(Videotitles.length, (index) {
+                        return PopupMenuItem(
+                            value: index,
+                            onTap: () => countries,
+                            child: Wrap(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Icon(
+                                    videosTr[index],
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Padding(padding: const EdgeInsets.only(left: 20), child: Text(Videotitles[index]))
+                              ],
+                            ));
+                      }));
+                },
+                child: Container(
+                    height: 40,
+                    width: 200,
+                    margin: const EdgeInsets.only(left: 110,right: 10),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1,
+                            spreadRadius: 1
+                        )
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Tooltip(
+                          message: "select video category",
+                          child: TextButton.icon(
+                              icon: const Icon(Icons.menu,color: Colors.black,),
+                              label: Text("Categories",style: AppFonts.mediumStyle(fontSize: 15,fontColor: Colors.black),),
+                              onPressed: () {
+                                showMenu(
+                                    context: context,
+                                    position: const RelativeRect.fromLTRB(100, 170, 100, 100),
+                                    items: List.generate(Videotitles.length, (index) {
+                                      return PopupMenuItem(
+                                          value: index,
+                                          onTap: () => countries,
+                                          child: Wrap(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 10),
+                                                child: Icon(
+                                                  videosTr[index],
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              Padding(padding: const EdgeInsets.only(left: 20), child: Text(Videotitles[index]))
+                                            ],
+                                          ));
+                                    }));
+                              }),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        const Icon(Icons.keyboard_arrow_down_rounded,color: Colors.black,)
+                      ],
                     )
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Tooltip(
-                      message: "select video category",
-                      child: TextButton.icon(
-                          icon: const Icon(Icons.menu,color: Colors.black,),
-                          label: Text("Categories",style: AppFonts.mediumStyle(fontSize: 15,fontColor: Colors.black),),
-                          onPressed: () {
-                            showMenu(
-                                context: context,
-                                position: const RelativeRect.fromLTRB(120, 200, 100, 100),
-                                items: List.generate(Videotitles.length, (index) {
-                                  return PopupMenuItem(
-                                      value: index,
-                                      onTap: () => countries,
-                                      child: Wrap(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 10),
-                                            child: Icon(
-                                              videosTr[index],
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          Padding(padding: const EdgeInsets.only(left: 20), child: Text(Videotitles[index]))
-                                        ],
-                                      ));
-                                }));
-                          }),
-                    ),
-                    Icon(Icons.keyboard_arrow_down_rounded,color: Colors.black,)
-                  ],
-                )
               ),
-              Expanded(
-                child: Container(
-                  color: const Color(0xff32325E),
-                  height: 40,
-                  child: TabBar(
+
+              const SizedBox(
+                width: 30,
+              ),
+             SizedBox(
+    height: 30,
+    child:TabBar(
                     isScrollable: true,
+                    controller: tabController,
                     labelColor: Colors.white,
                     labelStyle: AppFonts.mediumStyle(fontColor: Colors.black,fontSize: 15),
                     unselectedLabelColor: Colors.white,
@@ -419,33 +507,32 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                     ],
                   ),
                 ),
-              ),
               const SizedBox(
-                width: 10,
+                width: 30,
               ),
               Container(
-                padding: const EdgeInsets.all(10),
+                height: 30,
+                padding: const EdgeInsets.only(left: 20,right: 20,top: 3),
                 decoration: const BoxDecoration(
                     color: Color(0xFF68AB41),
-                    borderRadius: BorderRadius.all(Radius.circular(20),
-                    )
+
                 ),
                 child: Text("B2B Register",style: AppFonts.mediumStyle(fontColor: Colors.white,fontSize: 15),),
               ),
               const SizedBox(
-                width: 10,
+                width: 20,
               ),
               Container(
-                padding: const EdgeInsets.all(10),
+                height: 30,
+                padding: const EdgeInsets.only(left: 20,right: 20,top: 3),
                 decoration: const BoxDecoration(
                     color: Color(0xFF68AB41),
-                    borderRadius: BorderRadius.all(Radius.circular(20),
-                    )
+
                 ),
                 child: Text("Membership",style: AppFonts.mediumStyle(fontColor: Colors.white,fontSize: 15),),
               ),
               const SizedBox(
-                width: 160,
+                width: 110,
               ),
             ],
           ),
@@ -483,25 +570,18 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
 
   videos(){
     return CarouselSlider(
-      options: CarouselOptions(height: 460.0),
+      options: CarouselOptions(height: 410,  viewportFraction: 0.6,),
       items: [
     Container(
-      margin: const EdgeInsets.only(left: 13,right: 13),
+      width: 800,
     decoration:
-    BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black,),
-    child:  AspectRatio(
-      aspectRatio: 20/9,
-      child: Chewie(controller: _chewieController,),
+    BoxDecoration(borderRadius: BorderRadius.circular(30),
+    image: const DecorationImage(image: AssetImage("assets/images/thum.png"),
+    fit: BoxFit.cover
+    )
     ),
+    child: Chewie(controller: _chewieController,),
     ),
-        Container(
-            decoration:
-            BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-                color: Colors.black
-            ),
-            child: Chewie(controller: _chewieController)
-        ),
 
       ]
 
@@ -509,38 +589,39 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
   }
   explore(){
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 40,
           ),
-          Padding(padding: const EdgeInsets.only(left: 180),
-          child: Text("Category",style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
-          ),
+          Text("Category of Products",style: AppFonts.boldStyle(fontSize: 30,fontColor: const Color(0xff32325E)),),
           const SizedBox(
             height: 30,
           ),
-           Padding(padding: const EdgeInsets.only(left: 170),
-           child: TabBar(
-             isScrollable: true,
-             labelColor: Colors.white,
-             labelStyle: AppFonts.mediumStyle(fontColor: Colors.black,fontSize: 15),
-             unselectedLabelColor: Colors.black,
-             indicatorColor: const Color(0xFF68AB41),
-             labelPadding: const EdgeInsets.symmetric(horizontal: 15.0),
-             indicatorSize: TabBarIndicatorSize.tab,
-             indicator: const BoxDecoration(
+           SizedBox(
+             height: 30,
+             child: TabBar(
+               isScrollable: true,
+               controller: tabController2,
+               labelColor: Colors.white,
+               labelStyle: AppFonts.mediumStyle(fontColor: Colors.black,fontSize: 15),
+               unselectedLabelColor: Colors.black,
+               indicatorColor: const Color(0xFF68AB41),
+               labelPadding: const EdgeInsets.symmetric(horizontal: 15.0),
+               indicatorSize: TabBarIndicatorSize.tab,
+               indicator: const BoxDecoration(
                  color: Color(0xFF68AB41),
-                  borderRadius: BorderRadius.all(Radius.circular(15))
-             ),
-             tabs: const [
-               Tab(text: "All"),
-               Tab(text: "Home Linens"),
-               Tab(text: "Kitchen Linens",),
-               Tab(text: "Table Linens"),
-             ],
 
-           ),
+               ),
+               tabs: const [
+                 Tab(text: "All"),
+                 Tab(text: "Home Linens"),
+                 Tab(text: "Kitchen Linens",),
+                 Tab(text: "Table Linens"),
+                 Tab(text: "Living Linens",)
+               ],
+
+             ),
            ),
           const SizedBox(
             height: 30,
@@ -549,11 +630,23 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
             child:SizedBox(
               height: 288,
               child: TabBarView(
+                controller: tabController2,
                 children: [
-                 productItems(),
-                  productItems(),
-                  productItems(),
-                  productItems()
+                  Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                  child: productItems(),
+                  ),
+                  Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                    child: productItems(),
+                  ),
+                  Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                    child: productItems(),
+                  ),
+                  Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                    child: productItems(),
+                  ),
+                  Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                    child: productItems(),
+                  ),
                 ],
               ),
             ),
@@ -568,20 +661,21 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
   }
   featured(){
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(
           height: 50,
         ),
-        Padding(padding: const EdgeInsets.only(left: 170),
-          child: Text("Our Featured Products",style: AppFonts.boldStyle(fontSize: 20,fontColor: Colors.black),),
-        ),
+       Text("Our Featured Products",style: AppFonts.boldStyle(fontSize: 30,fontColor: const Color(0xff32325E)),),
         const SizedBox(
           height: 30,
         ),
         Center(
-          child: TabBar(
+          child: SizedBox(
+    height: 30,
+    child:TabBar(
             isScrollable: true,
+            controller: tabController3,
             labelColor: Colors.white,
             labelStyle: AppFonts.mediumStyle(fontColor: Colors.black,fontSize: 15),
             unselectedLabelColor: Colors.black,
@@ -590,7 +684,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: const BoxDecoration(
                 color: Color(0xFF68AB41),
-                borderRadius: BorderRadius.all(Radius.circular(15))
+
             ),
             tabs: const [
               Tab(text: "Best Seller"),
@@ -600,6 +694,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
 
           ),
         ),
+        ),
         const SizedBox(
           height: 30,
         ),
@@ -607,9 +702,14 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
           child:SizedBox(
             height: 288,
             child: TabBarView(
+              controller: tabController3,
               children: [
-                productItems(),
-                productItems(),
+                Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                  child: productItems(),
+                ),
+                Padding(padding: const EdgeInsets.only(left: 90,right: 90),
+                  child: productItems(),
+                ),
               ],
             ),
           ),
@@ -625,13 +725,14 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.only(left: 50.0),
           height: 150,
           width: double.maxFinite,
           decoration: const BoxDecoration(
             color: Color(0xff32325E),
           ),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
             Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
@@ -681,10 +782,10 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
               ),
             ),
             const SizedBox(
-              width: 100,
+              width: 200,
             ),
             Container(
-              width: 550,
+              width: 480,
               height: 50,
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -708,7 +809,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                     height: double.maxFinite,
                     width: 100,
                     child: Container(
-                      color: Colors.black,
+                      color: const Color(0xFF68AB41),
                       padding: const EdgeInsets.all(10),
                       child: const Text(
                         "Submit",
@@ -729,11 +830,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
           height: 40,
         ),
 
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 80,
-          ),
-          child: Row(
+         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
@@ -831,7 +928,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Shirts",
+                        "Home Linens",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -841,7 +938,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Kurtha",
+                        "Kitchen Linens",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -851,7 +948,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Tshirts",
+                        "Table Linens",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -861,7 +958,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Kitchen products",
+                        "Living Linens",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -871,7 +968,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Textile",
+                        "Others",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -958,7 +1055,7 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
                 ],
               ),
               const SizedBox(
-                width: 100,
+                width: 60,
               ),
               Column(
                 children: [
@@ -1043,155 +1140,193 @@ List<String> countries2 = ["Home Linen", "Kitchen Linen", "Table Linen", "Living
               ),
             ],
           ),
-        ),
         const SizedBox(
           height: 20,
-        )
+        ),
+        const Text("Copyright @2023 MOGO. All rights Reserved"),
+        const SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
   productItems(){
-    return
-    Padding(padding: const EdgeInsets.only(left: 20),
-    child: SizedBox(
-    height: 300,
-    child:  GestureDetector(
-    onTap: (){
-    Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
-    },
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    Container(
-    padding: const EdgeInsets.all(10),
-    decoration: const BoxDecoration(
-    color: Colors.white,
-    ),
-    width: 200,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Center(child: Image.asset("assets/images/shoe.png",height: 150,),),
-    const SizedBox(
-    height: 50,
-    ),
-    RatingBarIndicator(
-    rating: 4,
-    itemBuilder: (context, index) => const Icon(
-    Icons.star,
-    color: Colors.amber,
-    ),
-    itemCount: 5,
-    itemSize: 20.0,
-    direction: Axis.horizontal,
-    ),
-    Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
-    Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-    ],
-    )
-    ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(padding: const EdgeInsets.only(left: 20),
+        child: SizedBox(
+            height: 300,
+            child:  GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(this.context, MaterialPageRoute(builder: (context) => const ProductDetails()));
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(child: Image.asset("assets/images/shoe.png",height: 150,),),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          RatingBarIndicator(
+                            rating: 4,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 20.0,
+                            direction: Axis.horizontal,
+                          ),
+                          Text("Shoe(Black)",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
+                          Text("Rs.249",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      )
+                  ),
 
-    const SizedBox(
-    width: 80,
-    ),
-    Container(
-    padding: const EdgeInsets.all(10),
-    decoration: const BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    width: 200,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Center(child: Image.asset("assets/images/plates.png",height: 150,),),
-    const SizedBox(
-    height: 50,
-    ),
-    RatingBarIndicator(
-    rating: 3,
-    itemBuilder: (context, index) => const Icon(
-    Icons.star,
-    color: Colors.amber,
-    ),
-    itemCount: 5,
-    itemSize: 20.0,
-    direction: Axis.horizontal,
-    ),
-    Text("Glass Plates",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
-    Text("Rs.400",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                  const SizedBox(
+                    width: 80,
+                  ),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(child: Image.asset("assets/images/plates.png",height: 150,),),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          RatingBarIndicator(
+                            rating: 3,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 20.0,
+                            direction: Axis.horizontal,
+                          ),
+                          Text("Glass Plates",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
+                          Text("Rs.400",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
 
-    ],
-    )
-    ),
-    const SizedBox(
-    width: 80,
-    ),
-    Container(
-    padding: const EdgeInsets.all(10),
-    decoration: const BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    width: 200,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Center(child: Image.asset("assets/images/bed.png",height: 150,),),
-    const SizedBox(
-    height: 50,
-    ),
-    RatingBarIndicator(
-    rating: 3.5,
-    itemBuilder: (context, index) => const Icon(
-    Icons.star,
-    color: Colors.amber,
-    ),
-    itemCount: 5,
-    itemSize: 20.0,
-    direction: Axis.horizontal,
-    ),
-    Text("Bed Cloth",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
-    Text("Rs.300",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-    ],
-    )
-    ),
-    const SizedBox(
-    width: 80,
-    ),
-    Container(
-    padding: const EdgeInsets.all(10),
-    decoration: const BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    width: 200,
-    child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Center(child: Image.asset("assets/images/bt.png",height: 150,),),
-    const SizedBox(
-    height: 50,
-    ),
-    RatingBarIndicator(
-    rating: 2.75,
-    itemBuilder: (context, index) => const Icon(
-    Icons.star,
-    color: Colors.amber,
-    ),
-    itemCount: 5,
-    itemSize: 20.0,
-    direction: Axis.horizontal,
-    ),
-    Text("Techfire Neckband",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
-    Text("Rs.490",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
-    ],
-    )
-    ),
-    ],
-    ),
-    )
-    ),
+                        ],
+                      )
+                  ),
+                  const SizedBox(
+                    width: 80,
+                  ),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(child: Image.asset("assets/images/bed.png",height: 150,),),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          RatingBarIndicator(
+                            rating: 3.5,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 20.0,
+                            direction: Axis.horizontal,
+                          ),
+                          Text("Bed Cloth",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
+                          Text("Rs.300",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      )
+                  ),
+                  const SizedBox(
+                    width: 80,
+                  ),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(child: Image.asset("assets/images/bt.png",height: 150,),),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          RatingBarIndicator(
+                            rating: 2.75,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 20.0,
+                            direction: Axis.horizontal,
+                          ),
+                          Text("Techfire Neckband",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
+                          Text("Rs.490",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      )
+                  ),
+                  const SizedBox(
+                    width: 80,
+                  ),
+                  Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      width: 200,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(child: Image.asset("assets/images/lap.png",height: 180,),),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          RatingBarIndicator(
+                            rating: 4.5,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 20.0,
+                            direction: Axis.horizontal,
+                          ),
+                          Text("Hp Lite Ryzen 5",style: AppFonts.lightStyle(fontSize: 15,fontColor: Colors.black),),
+                          Text("Rs.45,000",style: AppFonts.boldStyle(fontSize: 15,fontColor: Colors.black),),
+                        ],
+                      )
+                  ),
+                ],
+              ),
+            )
+        ),
+      ),
     );
+
   }
 }

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:mogo_web/LoginPage/login_page.dart';
 import 'package:mogo_web/fonts.dart';
 
+import '../login_page.dart';
+
 
 class ProductDetails extends StatefulWidget{
   const ProductDetails({super.key});
@@ -12,16 +14,66 @@ class ProductDetails extends StatefulWidget{
   @override
   State<ProductDetails> createState() => _ProductDetails();
 }
-class _ProductDetails extends State<ProductDetails>{
+class _ProductDetails extends State<ProductDetails> with TickerProviderStateMixin{
+  int selectedTabIndex = 0;
+  TabController? tabController;
+  TabController? tabController2;
+  TabController? tabController3;
   List<String> countries = ["Brazil", "Nepal", "India", "China", "USA", "Canada"];
   final TextEditingController comment = TextEditingController();
+  List<IconData> videosTr = [
+    Icons.trending_up,
+    Icons.music_note,
+    Icons.movie_creation_outlined,
+    Icons.view_stream,
+    Icons.videogame_asset_rounded,
+    Icons.newspaper,
+    Icons.sports_volleyball_rounded,
+    Icons.lightbulb_outline,
+    Icons.linked_camera_sharp
+
+  ];
+  List<String> Videotitles = [
+    "Trending",
+    "Music",
+    "Movies",
+    "Live",
+    "Gaming",
+    "News",
+    "Sports",
+    "Learning",
+    "Fashion & Beauty"
+  ];
   bool? isChecked = true;
+  @override
+  void initState() {
+    tabController = TabController(length: 5, vsync: this);
+    tabController!.addListener(() {
+      setState(() {
+        selectedTabIndex = tabController!.index;
+      });
+    });
+    tabController2 = TabController(length: 5, vsync: this);
+    tabController2!.addListener(() {
+      setState(() {
+        selectedTabIndex = tabController2!.index;
+      });
+    });
+    tabController3 = TabController(length: 2, vsync: this);
+    tabController3!.addListener(() {
+      setState(() {
+        selectedTabIndex = tabController3!.index;
+      });
+    });
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context){
     return DefaultTabController( length: 4,
     child: Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size(150, 150),
+        preferredSize: const Size(170, 170),
         child: appBar(),
       ),
       body: body(),
@@ -354,36 +406,36 @@ class _ProductDetails extends State<ProductDetails>{
 
   appBar(){
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-            height: 100,
+            padding: const EdgeInsets.only(top: 6,bottom: 6),
+            color: const Color(0xFF68AB41),
+            child: Center(child: Text("Special Discount 50% for mens wear till saturday",style: AppFonts.mediumStyle(fontSize: 15,fontColor: Colors.white),),)
+        ),
+
+        Container(
+            height: 70,
+            padding: const EdgeInsets.only(left: 120),
             color: const Color.fromARGB(15, 15, 15, 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: (){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Login()));
-                  },
-                  child: const Icon(Icons.arrow_back,color: Color.fromARGB(255, 44, 6, 108),),
-                ),
-
                 const SizedBox(
                   width: 10,
                 ),
-                Image.asset("assets/images/logo.png",width: 120,height: 120,),
+                Image.asset("assets/images/logo.png",width: 150,height: 60,),
                 const SizedBox(
-                  width: 20,
+                  width: 40,
                 ),
                 Container(
-                    width: 400,
                     height: 40,
                     decoration: myBoxDecoration(), //             <--- BoxDecoration here
                     child:  Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: 400,
+                          width: 670,
                           child: TextField(
                             cursorColor: Colors.grey,
                             decoration: InputDecoration(
@@ -399,7 +451,17 @@ class _ProductDetails extends State<ProductDetails>{
                                     color: Colors.grey,
                                     fontSize: 15
                                 ),
-                                suffixIcon: const Icon(Icons.search)
+                                suffixIcon: Container(
+                                  decoration: const BoxDecoration(
+                                      color:  Color(0xff32325E),
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(25),
+                                          bottomRight: Radius.circular(25)
+                                      )
+                                  ),
+
+                                  child: const Icon(Icons.search,color: Colors.white,),
+                                )
                             ),
                           ),
                         )
@@ -407,65 +469,168 @@ class _ProductDetails extends State<ProductDetails>{
                     )
                 ),
 
-
+                const SizedBox(
+                  width: 40,
+                ),
+                const Icon(Icons.favorite,color: Color(0xFF68AB41),size: 30,),
                 const SizedBox(
                   width: 20,
                 ),
-                Container(
-                  height: 40,
-                  width: 240,
-                  padding: const EdgeInsets.all(8),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(25)),
-                    color: Color.fromARGB(
-                        255, 26, 182, 14),
-                  ),
-                  child: Center(child: Text("B2B Registration",style: AppFonts.boldStyle(fontColor: Colors.white,fontSize: 15)),),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+                  },
+                  child: const Icon(Icons.person_pin,color: Color(0xff32325E),size: 30,),
                 ),
                 const SizedBox(
                   width: 20,
                 ),
-                const Icon(Icons.shopping_cart,color: Color.fromARGB(
-                    255, 7, 21, 110),size: 30,),
+                const Icon(Icons.shopping_cart,color: Color(0xff32325E),size: 30),
                 const SizedBox(
-                  width: 20,
+                  width: 10,
                 ),
-                const Icon(Icons.person_pin,color: Color.fromARGB(
-                    255, 7, 21, 110),size: 30,),
-                const SizedBox(
-                  width: 20,
-                ),
+                const Text("My Cart\n Rs.0.0",)
               ],
             )
         ),
         Container(
-          color: const Color.fromARGB(
-              255, 7, 21, 110),
-          height: 40,
-          child: TabBar(
-            labelColor: Colors.white,
-            labelStyle: AppFonts.boldStyle(fontColor: Colors.black,fontSize: 15),
-            unselectedLabelColor: Colors.white,
-            indicatorColor: const Color.fromARGB(
-    255, 26, 182, 14),
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicator: const BoxDecoration(
-                color: Color.fromARGB(
-    255, 26, 182, 14),
-    ),
-            tabs: const [
-              Tab(icon: Icon(Icons.explore,color: Colors.white,),),
-              Tab(text: "Trending"),
-              Tab(text: "Channels"),
-              Tab(text: "Online Shop"),
-              Tab(text: "India"),
-              Tab(text: "Tour Operator"),
-              Tab(text: "Insurance"),
-              Tab(text: "World"),
-              Tab(text: "News"),
+          color:const Color(0xff32325E),
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  showMenu(
+                      context: context,
+                      position: const RelativeRect.fromLTRB(100, 170, 100, 100),
+                      items: List.generate(Videotitles.length, (index) {
+                        return PopupMenuItem(
+                            value: index,
+                            onTap: () => countries,
+                            child: Wrap(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Icon(
+                                    videosTr[index],
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Padding(padding: const EdgeInsets.only(left: 20), child: Text(Videotitles[index]))
+                              ],
+                            ));
+                      }));
+                },
+                child: Container(
+                    height: 40,
+                    width: 200,
+                    margin: const EdgeInsets.only(left: 110,right: 10),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 1,
+                            spreadRadius: 1
+                        )
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Tooltip(
+                          message: "select video category",
+                          child: TextButton.icon(
+                              icon: const Icon(Icons.menu,color: Colors.black,),
+                              label: Text("Categories",style: AppFonts.mediumStyle(fontSize: 15,fontColor: Colors.black),),
+                              onPressed: () {
+                                showMenu(
+                                    context: context,
+                                    position: const RelativeRect.fromLTRB(100, 170, 100, 100),
+                                    items: List.generate(Videotitles.length, (index) {
+                                      return PopupMenuItem(
+                                          value: index,
+                                          onTap: () => countries,
+                                          child: Wrap(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 10),
+                                                child: Icon(
+                                                  videosTr[index],
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              Padding(padding: const EdgeInsets.only(left: 20), child: Text(Videotitles[index]))
+                                            ],
+                                          ));
+                                    }));
+                              }),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        const Icon(Icons.keyboard_arrow_down_rounded,color: Colors.black,)
+                      ],
+                    )
+                ),
+              ),
+
+              const SizedBox(
+                width: 30,
+              ),
+              SizedBox(
+                height: 30,
+                child:TabBar(
+                  isScrollable: true,
+                  controller: tabController,
+                  labelColor: Colors.white,
+                  labelStyle: AppFonts.mediumStyle(fontColor: Colors.black,fontSize: 15),
+                  unselectedLabelColor: Colors.white,
+                  indicatorColor: const Color(0xFF68AB41),
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicator: const BoxDecoration(
+                      color: Color(0xFF68AB41)),
+                  tabs: const [
+                    Tab(text: "Home"),
+                    Tab(text: "Channels"),
+                    Tab(text: "Online Shop",),
+                    Tab(text: "Insurance"),
+                    Tab(text: "Travel Agency"),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                width: 30,
+              ),
+              Container(
+                height: 30,
+                padding: const EdgeInsets.only(left: 20,right: 20,top: 3),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF68AB41),
+
+                ),
+                child: Text("B2B Register",style: AppFonts.mediumStyle(fontColor: Colors.white,fontSize: 15),),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 30,
+                padding: const EdgeInsets.only(left: 20,right: 20,top: 3),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF68AB41),
+
+                ),
+                child: Text("Membership",style: AppFonts.mediumStyle(fontColor: Colors.white,fontSize: 15),),
+              ),
+              const SizedBox(
+                width: 110,
+              ),
             ],
           ),
         ),
+
       ],
     );
   }
